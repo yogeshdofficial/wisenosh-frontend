@@ -11,14 +11,18 @@ import { useState } from "react";
 import { FiCheck, FiPlay, FiX } from "react-icons/fi";
 
 export default function FoodInfo({ data }) {
-  //   console.log(data);
+  console.log(data);
   return (
     <Stack>
       <Text ta={"center"} fw={700} size="xl">
-        It's a {data.name}
+        It's a {data.foodName}
       </Text>
       <Text c={"orange"} ta={"center"}>
-        It contains {data.calories}
+        <List>
+          {data.calories.map((calory) => (
+            <List.Item>{calory}</List.Item>
+          ))}
+        </List>
       </Text>
       <Stack>
         <Text size={"lg"} fw={700} td={"underline"}>
@@ -45,6 +49,38 @@ export default function FoodInfo({ data }) {
         >
           {data.benefits.map((benefit, index) => (
             <List.Item key={index}>{benefit}</List.Item>
+          ))}
+        </List>
+      </Stack>{" "}
+      <Stack>
+        <Text size={"lg"} fw={700} td={"underline"}>
+          Ingredients
+        </Text>
+        <List
+          icon={
+            <ThemeIcon variant="default" radius={24} c="teal">
+              <FiCheck />
+            </ThemeIcon>
+          }
+        >
+          {data.ingredients.map((ingredient, index) => (
+            <List.Item key={index}>{ingredient}</List.Item>
+          ))}
+        </List>
+      </Stack>
+      <Stack>
+        <Text size={"lg"} fw={700} td={"underline"}>
+          Items Included
+        </Text>
+        <List
+          icon={
+            <ThemeIcon variant="default" radius={24} c="teal">
+              <FiCheck />
+            </ThemeIcon>
+          }
+        >
+          {data.foodItemsIncluded.map((item, index) => (
+            <List.Item key={index}>{item}</List.Item>
           ))}
         </List>
       </Stack>

@@ -44,7 +44,7 @@ export default function Home() {
               // console.log(imgFiles[0]);
 
               const formData = new FormData();
-              formData.append("img", imgFiles[0]);
+              formData.append("foodImg", imgFiles[0]);
 
               try {
                 const response = await fetch(
@@ -57,7 +57,7 @@ export default function Home() {
                 );
 
                 const data = await response.json();
-                // console.log(data);
+                console.log(data);
                 setData(data);
               } catch (error) {
                 console.log(error);
