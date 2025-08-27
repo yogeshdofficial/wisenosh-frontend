@@ -44,7 +44,7 @@ export default function Header({
           onClick={toggleMobileNavbar}
           hiddenFrom="xs"
         />
-        <Text>SmartBite</Text>
+        <Text>WiseNosh</Text>
         <Group ml={"auto"}>
           <Autocomplete
             visibleFrom="xs"
