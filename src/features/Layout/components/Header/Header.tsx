@@ -1,5 +1,3 @@
-//import classes from "./Header.module.scss";
-
 import {
   ActionIcon,
   AppShell,
@@ -10,9 +8,8 @@ import {
   useComputedColorScheme,
   useMantineColorScheme,
 } from "@mantine/core";
-import { FiPlus, FiPlusCircle, FiPlusSquare, FiSearch } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { RxSun, RxMoon } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   isDesktopNavbarOpened: boolean;
@@ -29,27 +26,15 @@ export default function Header({
 }: HeaderProps) {
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme();
-  const navigate = useNavigate();
 
   return (
     <AppShell.Header>
       <Group px={"sm"} h={"100%"}>
-        <Burger
-          opened={isDesktopNavbarOpened}
-          onClick={toggleDesktopNavbar}
-          visibleFrom="xs"
-        />
-        <Burger
-          opened={isMobileNavbarOpened}
-          onClick={toggleMobileNavbar}
-          hiddenFrom="xs"
-        />
+        <Burger opened={isDesktopNavbarOpened} onClick={toggleDesktopNavbar} visibleFrom="xs" />
+        <Burger opened={isMobileNavbarOpened} onClick={toggleMobileNavbar} hiddenFrom="xs" />
         <Text>SavoirNosh</Text>
         <Group ml={"auto"}>
-          <Autocomplete
-            visibleFrom="xs"
-            leftSection={<FiSearch />}
-          ></Autocomplete>
+          <Autocomplete visibleFrom="xs" leftSection={<FiSearch />}></Autocomplete>
           <ActionIcon
             size={"lg"}
             variant="default"
@@ -57,22 +42,9 @@ export default function Header({
               setColorScheme(computedColorScheme === "dark" ? "light" : "dark");
             }}
           >
-            {computedColorScheme == "dark" ? (
-              <RxSun size={"60%"} />
-            ) : (
-              <RxMoon size={"60%"} />
-            )}
+            {computedColorScheme == "dark" ? <RxSun size={"60%"} /> : <RxMoon size={"60%"} />}
           </ActionIcon>
         </Group>
-        {/* <ActionIcon
-          variant="default"
-          size={"lg"}
-          onClick={() => {
-            navigate("/create");
-          }}
-        >
-          <FiPlus size={"70%"}></FiPlus>
-        </ActionIcon> */}
       </Group>
     </AppShell.Header>
   );
